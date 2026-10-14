@@ -312,7 +312,7 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     btn.disabled=true; btn.textContent='Saving…';
     var p=new URLSearchParams(location.search);
     fetch(SUPABASE_URL+'/rest/v1/book_signups',{method:'POST',headers:{'apikey':SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
-      body:JSON.stringify({name:name||null,email:email,source:p.get('utm_source')||p.get('ref')||null})})
+      body:JSON.stringify({name:name||null,email:email,source:([p.get('utm_source')||p.get('ref'),p.get('utm_content')].filter(Boolean).join(':').slice(0,100))||null})})
     .then(function(r){
       if(r.ok||r.status===409){ f.hidden=true; document.getElementById('su-done').hidden=false; }
       else throw new Error(r.status);
