@@ -25,6 +25,12 @@ a{color:#252525}a:hover{color:#000}
 .st span:first-child{font-size:13px;font-weight:700;letter-spacing:.16em;min-width:92px}
 .st span:last-child{font-size:19px;font-style:italic}
 #pick:not([hidden]),#su-done:not([hidden]){display:flex}
+.lnk{font-family:inherit;background:none;border:0;padding:6px 0;font-size:15px;font-weight:700;color:#252525;cursor:pointer;text-decoration:underline}
+.qo{font-family:inherit;text-align:left;font-size:18px;padding:16px 18px;min-height:56px;border:2px solid #252525;background:#FCF5E3;color:#252525;cursor:pointer;line-height:1.35}
+.qo:hover{background:#FBE3CF}.qo[aria-pressed=true]{background:#DD5406}
+.qo:focus-visible,.lnk:focus-visible,.cta2:focus-visible{outline:3px solid #DD5406;outline-offset:2px}
+.cta2{font-family:inherit;font-size:17px;font-weight:700;background:transparent;color:#FCF5E3;border:2px solid #FCF5E3;padding:14px 20px;min-height:56px;cursor:pointer}
+#qz-res:not([hidden]){display:flex}
 </style>
 </head>
 <body>
@@ -32,7 +38,7 @@ a{color:#252525}a:hover{color:#000}
 
 <header style="background: #252525; padding: 18px 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center">
 <div style="color: #FCF5E3; font-weight: 700; font-size: 15px; letter-spacing: 0.24em">BECAUSE YOU CAN</div>
-<a href="#signup" style="display: inline-block; background: #DD5406; color: #252525; font-weight: 700; font-size: 15px; padding: 13px 22px; text-decoration: none; letter-spacing: 0.04em">Get the first copy</a>
+<div style="display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center"><a href="#quiz" style="color: #FCF5E3; font-weight: 700; font-size: 15px; letter-spacing: 0.04em">Find your stage</a><a href="#signup" style="display: inline-block; background: #DD5406; color: #252525; font-weight: 700; font-size: 15px; padding: 13px 22px; text-decoration: none; letter-spacing: 0.04em">Get the first copy</a></div>
 </header>
 
 <section style="background: #252525; display: flex; flex-wrap: wrap">
@@ -97,6 +103,38 @@ a{color:#252525}a:hover{color:#000}
 <p id="pick-book" style="margin: 0; font-size: 17px"></p>
 </div>
 <p id="nopick" style="margin: 6px 0 0 0; font-size: 16px; color: #5C5043">Pick a sentence to see where it sits on the scale and which chapters meet you there.</p>
+</div>
+</div>
+</section>
+
+<section id="quiz" style="background: #F3E7C9; padding: 88px 32px; border-top: 2px solid #252525">
+<div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px">
+<div style="color: #B24304; font-weight: 700; font-size: 14px; letter-spacing: 0.3em">FIND YOUR STAGE</div>
+<h2 style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.05; font-weight: 700">Where are you on the scale right now?</h2>
+<p style="margin: 0; font-size: 19px; max-width: 640px">Seven quick questions. Answer for how life has felt this month, not how you would like it to feel. There are no wrong answers, and nothing you pick is saved.</p>
+<div id="qz" style="background: #FFFFFF; border: 2px solid #252525; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap">
+<div id="qz-count" style="font-size: 13px; font-weight: 700; letter-spacing: 0.16em"></div>
+<button id="qz-back" type="button" class="lnk" hidden>&larr; Back</button>
+</div>
+<div style="height: 6px; background: #EADBB8"><div id="qz-bar" style="height: 6px; width: 0; background: #DD5406; transition: width .25s"></div></div>
+<h3 id="qz-q" style="margin: 0; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; font-weight: 700"></h3>
+<div id="qz-opts" role="group" style="display: flex; flex-direction: column; gap: 10px"></div>
+</div>
+<div id="qz-res" hidden style="background: #252525; color: #FCF5E3; padding: 32px; flex-direction: column; gap: 14px">
+<div style="color: #F08A4B; font-weight: 700; font-size: 13px; letter-spacing: 0.24em">YOUR STAGE RIGHT NOW</div>
+<div id="qz-stage" style="font-size: clamp(40px, 6vw, 72px); font-weight: 700; line-height: 1"></div>
+<div id="qz-says" style="font-size: 26px; font-style: italic"></div>
+<div style="display: flex; gap: 4px; margin: 6px 0" id="qz-meter" aria-hidden="true"></div>
+<p id="qz-desc" style="margin: 0; font-size: 18px; max-width: 640px"></p>
+<p id="qz-book" style="margin: 0; font-size: 17px; color: #E8DCC0; max-width: 640px"></p>
+<p id="qz-next" style="margin: 0; font-size: 17px; max-width: 640px"></p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a href="#signup" class="cta" style="text-decoration: none; display: inline-flex; align-items: center">Reserve my first copy</a>
+<button id="qz-share" type="button" class="cta2">Share my stage</button>
+<button id="qz-again" type="button" class="cta2">Take it again</button>
+</div>
+<p id="qz-shared" role="status" style="margin: 0; font-size: 14px; color: #E8DCC0"></p>
 </div>
 </div>
 </section>
@@ -200,6 +238,67 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     box.appendChild(b);
   });
 
+
+  // ---- Find-your-stage quiz ----
+  var STAGE=[null,
+   {n:'Fear',s:'\u201cI can\u2019t.\u201d',d:'Something feels too big right now, and the instinct is to freeze or stay small. That is not a flaw. It is the starting point, and every stage above it begins here.'},
+   {n:'Guilt',s:'\u201cI shouldn\u2019t.\u201d',d:'You can see what you want, but a voice keeps asking whether you are allowed to want it. Much of that voice is borrowed from other people\u2019s rules.'},
+   {n:'Anger',s:'\u201cIt\u2019s their fault.\u201d',d:'There is energy here, but it is pointed outward. Anger is a sign you care. The work is to turn it from blame into a decision.'},
+   {n:'Worry',s:'\u201cWhat if?\u201d',d:'Your mind is running scenarios and rarely switches off. You are no longer stuck. You are thinking, and now the thinking needs tools so it can rest.'},
+   {n:'Calm',s:'\u201cIt\u2019s okay.\u201d',d:'You have found some steadiness. Things still go wrong, but they no longer knock you over. This is the turning point of the scale.'},
+   {n:'Hope',s:'\u201cI could.\u201d',d:'A possibility has opened up and you can see a path. The next step is to turn that possibility into a direction you act on.'},
+   {n:'Courage',s:'\u201cI will.\u201d',d:'You are moving before you feel fully ready, and repeating the hard thing until it becomes ordinary. Keep going.'},
+   {n:'Love',s:'\u201cBecause I can.\u201d',d:'You act from fullness rather than need. You do the work because you get to, and you give your full attention to the people around you.'}];
+  var Q=[
+   {q:'A big opportunity lands in front of you. Your first thought is\u2026',o:[['\u201cI\u2019m not ready for this.\u201d',1],['\u201cWhat if it goes wrong?\u201d',4],['\u201cThis could really work.\u201d',6],['\u201cYes. When do we start?\u201d',7]]},
+   {q:'Something goes wrong at work or at home. You mostly think\u2026',o:[['\u201cI should have done better.\u201d',2],['\u201cSomeone else messed this up.\u201d',3],['\u201cIt\u2019s okay. This will pass.\u201d',5],['\u201cWhat can I learn from this?\u201d',7]]},
+   {q:'When you lie awake at night, your mind is usually\u2026',o:[['Afraid of one specific thing',1],['Replaying everything that could go wrong',4],['Fairly quiet. I mostly sleep well',5],['Excited, planning what comes next',6]]},
+   {q:'When you think about what you want from life, you feel\u2026',o:[['Guilty for wanting more',2],['Frustrated that others hold me back',3],['Hopeful. I can see a path',6],['Already on my way',7]]},
+   {q:'Most of your days feel like\u2026',o:[['Doing what is expected of me',2],['Bracing for the next problem',4],['Steady, not rushed',5],['Full. I love what I do',8]]},
+   {q:'When someone criticises you, you tend to\u2026',o:[['Shut down',1],['Snap back',3],['Take a breath and listen',5],['Feel grateful. It helps me grow',8]]},
+   {q:'Which sentence have you said to yourself most this month?',o:[['\u201cI can\u2019t.\u201d',1],['\u201cIt\u2019s their fault.\u201d',3],['\u201cI could.\u201d',6],['\u201cBecause I can.\u201d',8]]}];
+  var BOOK={1:data[7].book,2:data[6].book,3:data[5].book,4:data[4].book,5:data[3].book,6:data[2].book,7:data[1].book,8:data[0].book};
+  var ans=[], cur=0, last=0;
+  var $=function(id){return document.getElementById(id)};
+  function show(){
+    $('qz').hidden=false; $('qz-res').hidden=true;
+    $('qz-count').textContent='QUESTION '+(cur+1)+' OF '+Q.length;
+    $('qz-bar').style.width=(cur/Q.length*100)+'%';
+    $('qz-back').hidden=cur===0;
+    $('qz-q').textContent=Q[cur].q;
+    var box=$('qz-opts'); box.textContent='';
+    Q[cur].o.forEach(function(o,i){
+      var b=document.createElement('button'); b.type='button'; b.className='qo'; b.textContent=o[0];
+      b.setAttribute('aria-pressed', ans[cur]===i?'true':'false');
+      b.onclick=function(){ ans[cur]=i; if(cur<Q.length-1){cur++;show();} else result(); };
+      box.appendChild(b);
+    });
+  }
+  function result(){
+    var sum=0; ans.forEach(function(a,i){sum+=Q[i].o[a][1]});
+    var lo=0,hi=0; Q.forEach(function(q){var v=q.o.map(function(o){return o[1]}); lo+=Math.min.apply(null,v); hi+=Math.max.apply(null,v);});
+    var st=Math.min(8,Math.max(1,Math.round(1+(sum-lo)/(hi-lo)*7))); last=st;
+    var S=STAGE[st];
+    $('qz').hidden=true; $('qz-res').hidden=false;
+    $('qz-stage').textContent=st+'  '+S.n.toUpperCase();
+    $('qz-says').textContent=S.s;
+    var m=$('qz-meter'); m.textContent='';
+    for(var k=1;k<=8;k++){var c=document.createElement('div'); c.style.cssText='flex:1;height:12px;background:'+(k<=st?'#DD5406':'#4A4540'); m.appendChild(c);}
+    $('qz-desc').textContent=S.d;
+    $('qz-book').textContent='In the book: '+BOOK[st];
+    $('qz-next').textContent= st<8 ? 'Your next step up is '+STAGE[st+1].n+': '+STAGE[st+1].s : 'You are at the top of the scale. The book shows how to stay there, and how to bring others with you.';
+    $('qz-shared').textContent='';
+    $('qz-res').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('qz-back').onclick=function(){ if(cur>0){cur--;show();} };
+  $('qz-again').onclick=function(){ ans=[];cur=0;show(); $('quiz').scrollIntoView({behavior:'smooth'}); };
+  $('qz-share').onclick=function(){
+    var S=STAGE[last], t='I\u2019m at stage '+last+', '+S.n+' ('+S.s+'), on the Because-You-Can Scale. Find yours:', u=location.origin+location.pathname+'#quiz';
+    if(navigator.share){ navigator.share({title:'Because You Can',text:t,url:u}).catch(function(){}); }
+    else if(navigator.clipboard){ navigator.clipboard.writeText(t+' '+u).then(function(){$('qz-shared').textContent='Copied. Paste it anywhere to share.';},function(){$('qz-shared').textContent=t+' '+u;}); }
+    else { $('qz-shared').textContent=t+' '+u; }
+  };
+  show();
   var f=document.getElementById('su-form'), btn=document.getElementById('su-btn'), msg=document.getElementById('su-msg');
   var nm=document.getElementById('su-name'), em=document.getElementById('su-email');
   var DEF=msg.textContent;
