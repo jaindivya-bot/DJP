@@ -32,10 +32,19 @@ a{color:#252525}a:hover{color:#000}
 .cta2{font-family:inherit;font-size:17px;font-weight:700;background:transparent;color:#FCF5E3;border:2px solid #FCF5E3;padding:14px 20px;min-height:56px;cursor:pointer}
 #qz-res:not([hidden]),#qr-done:not([hidden]){display:flex}
 [hidden]{display:none!important}
+#qr-form,#qr-done{order:1}#qz-book,#qz-next{order:2}#qz-acts,#qz-shared{order:3}
+.adonly{display:none}
+html.ad #wrap{display:flex;flex-direction:column}
+html.ad #wrap>header{order:-2}
+html.ad #quiz{order:-1;padding:24px 16px 48px!important;border-top:0!important}
+html.ad #quiz .adonly{display:block}
+html.ad #quiz .noad{display:none}
+html.ad #qz{padding:20px!important}
 </style>
+<script>try{var _p=new URLSearchParams(location.search);if(_p.get('utm_medium')==='paid'||_p.get('fbclid')){document.documentElement.classList.add('ad');if(location.hash==='#quiz')history.replaceState(null,'',location.pathname+location.search);}}catch(e){}</script>
 </head>
 <body>
-<div style="font-family: 'Century Gothic', 'Adventor', 'Avenir Next', sans-serif; color: #252525; background: #FCF5E3; line-height: 1.5">
+<div id="wrap" style="font-family: 'Century Gothic', 'Adventor', 'Avenir Next', sans-serif; color: #252525; background: #FCF5E3; line-height: 1.5">
 
 <header style="background: #252525; padding: 18px 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center">
 <div style="color: #FCF5E3; font-weight: 700; font-size: 15px; letter-spacing: 0.24em">BECAUSE YOU CAN</div>
@@ -110,9 +119,10 @@ a{color:#252525}a:hover{color:#000}
 
 <section id="quiz" style="background: #F3E7C9; padding: 88px 32px; border-top: 2px solid #252525">
 <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px">
-<div style="color: #B24304; font-weight: 700; font-size: 14px; letter-spacing: 0.3em">FIND YOUR STAGE</div>
+<div style="color: #B24304; font-weight: 700; font-size: 14px; letter-spacing: 0.3em"><span class="noad">FIND YOUR STAGE</span><span class="adonly">FROM DIVYA JAIN’S NEW BOOK, BECAUSE YOU CAN</span></div>
 <h2 style="margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.05; font-weight: 700">Where are you on the scale right now?</h2>
-<p style="margin: 0; font-size: 19px; max-width: 640px">Seven quick questions. Answer for how life has felt this month, not how you would like it to feel. There are no wrong answers, and nothing you pick is saved.</p>
+<p class="adonly" style="margin: 0; font-size: 18px; max-width: 640px">Seven quick questions, about one minute. Tap your first answer below.</p>
+<p class="noad" style="margin: 0; font-size: 19px; max-width: 640px">Seven quick questions. Answer for how life has felt this month, not how you would like it to feel. There are no wrong answers, and nothing you pick is saved.</p>
 <div id="qz" style="background: #FFFFFF; border: 2px solid #252525; padding: 28px; display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap">
 <div id="qz-count" style="font-size: 13px; font-weight: 700; letter-spacing: 0.16em"></div>
@@ -131,20 +141,20 @@ a{color:#252525}a:hover{color:#000}
 <p id="qz-book" style="margin: 0; font-size: 17px; color: #E8DCC0; max-width: 640px"></p>
 <p id="qz-next" style="margin: 0; font-size: 17px; max-width: 640px"></p>
 <form id="qr-form" novalidate style="background: #FCF5E3; color: #252525; padding: 22px; display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
-<div style="font-size: 20px; font-weight: 700; line-height: 1.25">Get your result by email and reserve a first-edition copy.</div>
+<div style="font-size: 20px; font-weight: 700; line-height: 1.25">Want one thing to try this week for your stage? I’ll email it to you, free.</div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 6px"><label for="qr-name" style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em">YOUR NAME</label><input id="qr-name" type="text" autocomplete="name" placeholder="First name" maxlength="120" class="in"></div>
 <div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><label for="qr-email" style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em">EMAIL</label><input id="qr-email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" class="in"></div>
 </div>
 <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
-<button id="qr-btn" type="submit" class="cta">Send me my result</button>
-<p id="qr-msg" role="status" style="margin: 0; font-size: 14px; color: #5C5043">Free. No payment now. You'll also be first in line for the book.</p>
+<button id="qr-btn" type="submit" class="cta">Email it to me</button>
+<p id="qr-msg" role="status" style="margin: 0; font-size: 14px; color: #5C5043">Free, no payment. You’ll also be first in line for a first-edition copy of the book.</p>
 </form>
 <div id="qr-done" hidden style="background: #FCF5E3; color: #252525; padding: 22px; margin-top: 8px; flex-direction: column; gap: 6px">
 <div style="font-size: 22px; font-weight: 700">You're on the list.</div>
 <p style="margin: 0; font-size: 16px">We'll email you your result and what to read first, and you'll be first to know when copies are ready.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<div id="qz-acts" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
 <button id="qz-share" type="button" class="cta2">Share my stage</button>
 <button id="qz-again" type="button" class="cta2">Take it again</button>
 </div>
@@ -273,6 +283,11 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
    {q:'Which sentence have you said to yourself most this month?',o:[['\u201cI can\u2019t.\u201d',1],['\u201cIt\u2019s their fault.\u201d',3],['\u201cI could.\u201d',6],['\u201cBecause I can.\u201d',8]]}];
   var BOOK={1:data[7].book,2:data[6].book,3:data[5].book,4:data[4].book,5:data[3].book,6:data[2].book,7:data[1].book,8:data[0].book};
   var ans=[], cur=0, last=0;
+  // Anonymous step counts (no answers, names or emails): visit, quiz_start, quiz_done, form_focus, hero_focus.
+  var SRC=(function(){var p=new URLSearchParams(location.search);return ([p.get('utm_source')||p.get('ref'),p.get('utm_content')].filter(Boolean).join(':').slice(0,100))||null;})();
+  var AD=document.documentElement.classList.contains('ad'), sent={};
+  function track(ev){ if(sent[ev])return; sent[ev]=1; try{ fetch(SUPABASE_URL+'/rest/v1/book_events',{method:'POST',keepalive:true,headers:{'apikey':SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({event:ev,source:SRC,ad_mode:AD})}).catch(function(){}); }catch(e){} }
+  track('visit');
   var $=function(id){return document.getElementById(id)};
   function show(){
     $('qz').hidden=false; $('qz-res').hidden=true;
@@ -284,7 +299,7 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     Q[cur].o.forEach(function(o,i){
       var b=document.createElement('button'); b.type='button'; b.className='qo'; b.textContent=o[0];
       b.setAttribute('aria-pressed', ans[cur]===i?'true':'false');
-      b.onclick=function(){ ans[cur]=i; if(cur<Q.length-1){cur++;show();} else result(); };
+      b.onclick=function(){ ans[cur]=i; track('quiz_start'); if(cur<Q.length-1){cur++;show();} else result(); };
       box.appendChild(b);
     });
   }
@@ -292,7 +307,7 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     var sum=0; ans.forEach(function(a,i){sum+=Q[i].o[a][1]});
     var lo=0,hi=0; Q.forEach(function(q){var v=q.o.map(function(o){return o[1]}); lo+=Math.min.apply(null,v); hi+=Math.max.apply(null,v);});
     var st=Math.min(8,Math.max(1,Math.round(1+(sum-lo)/(hi-lo)*7))); last=st;
-    var S=STAGE[st];
+    var S=STAGE[st]; track('quiz_done');
     $('qz').hidden=true; $('qz-res').hidden=false;
     $('qz-stage').textContent=st+'  '+S.n.toUpperCase();
     $('qz-says').textContent=S.s;
@@ -305,7 +320,7 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     $('qz-res').scrollIntoView({behavior:'smooth',block:'start'});
   }
   $('qz-back').onclick=function(){ if(cur>0){cur--;show();} };
-  $('qz-again').onclick=function(){ ans=[];cur=0;show(); qf.hidden=false; $('qr-done').hidden=true; qb.disabled=false; qb.textContent='Send me my result';  $('quiz').scrollIntoView({behavior:'smooth'}); };
+  $('qz-again').onclick=function(){ ans=[];cur=0;show(); qf.hidden=false; $('qr-done').hidden=true; qb.disabled=false; qb.textContent='Email it to me';  $('quiz').scrollIntoView({behavior:'smooth'}); };
   $('qz-share').onclick=function(){
     var S=STAGE[last], t='I\u2019m at stage '+last+', '+S.n+' ('+S.s+'), on the Because-You-Can Scale. Find yours:', u=location.origin+location.pathname+'#quiz';
     if(navigator.share){ navigator.share({title:'Because You Can',text:t,url:u}).catch(function(){}); }
@@ -321,6 +336,8 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
   }
   var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var qf=$('qr-form'), qb=$('qr-btn'), qm=$('qr-msg'), QDEF=qm.textContent;
+  qf.addEventListener('focusin',function(){track('form_focus')});
+  document.getElementById('su-form').addEventListener('focusin',function(){track('hero_focus')});
   qf.addEventListener('submit',function(ev){
     ev.preventDefault();
     if(qf.website.value) return;
@@ -330,7 +347,7 @@ var SUPABASE_KEY = "sb_publishable__HOGHRHcmXhx9IUgBSZXmg_NnfO_6wJ"; // publisha
     qb.disabled=true; qb.textContent='Saving…';
     saveSignup({name:$('qr-name').value.trim()||null,email:email,quiz_stage:last||null}).then(function(){
       qf.hidden=true; $('qr-done').hidden=false;
-    }).catch(function(){ qb.disabled=false; qb.textContent='Send me my result'; qm.textContent='Sorry, that did not go through. Please try again in a moment.'; qm.style.color='#B00020'; });
+    }).catch(function(){ qb.disabled=false; qb.textContent='Email it to me'; qm.textContent='Sorry, that did not go through. Please try again in a moment.'; qm.style.color='#B00020'; });
   });
   var f=document.getElementById('su-form'), btn=document.getElementById('su-btn'), msg=document.getElementById('su-msg');
   var nm=document.getElementById('su-name'), em=document.getElementById('su-email');
